@@ -836,18 +836,18 @@ random.seed(seed)
 seed_torch(seed)
 # rainbown end
 
-num_frames = 50000
+num_frames = 500000
 memory_size = 10000
 batch_size = 64
 target_update = 2000
 
 class inargs:
     def __init__(self):
-        self.checkpoint_path='./checkpoint'
-        self.model_path= './saved_model'
+        self.checkpoint_path="/content/drive/My Drive/turtlebot_stage_1"
+        self.model_path= "/content/drive/My Drive/turtlebot_stage_1"
         self.checkpoint_interval= 1000
         self.evaluate=False
-        self.continue_train=False
+        self.continue_train=True
 
 
 if __name__ == '__main__':
