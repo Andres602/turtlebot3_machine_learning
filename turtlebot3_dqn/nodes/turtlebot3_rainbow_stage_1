@@ -845,7 +845,7 @@ class inargs:
     def __init__(self):
         self.checkpoint_path="/content/drive/My Drive/turtlebot_stage_1/checkpoint"
         self.model_path= "/content/drive/My Drive/turtlebot_stage_1/saved_model"
-        self.checkpoint_interval= 10
+        self.checkpoint_interval= 1000
         self.evaluate=False
         self.continue_train=False
 
