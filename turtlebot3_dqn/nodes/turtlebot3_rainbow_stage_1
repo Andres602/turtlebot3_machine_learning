@@ -425,7 +425,7 @@ class DQNAgent:
         target_update,
         gamma = 0.99,
         # PER parameters
-        alpha = 0.01#0.2,
+        alpha =0.2,
         beta = 0.6,
         prior_eps = 1e-6,
         # Categorical DQN parameters
@@ -433,7 +433,7 @@ class DQNAgent:
         v_max = 200.0,
         atom_size = 51,
         # N-step Learning
-        n_step = 3,
+        n_step = 50,
         checkpoint_interval =0
     ):
         """Initialization.
@@ -630,7 +630,7 @@ class DQNAgent:
             self.beta = self.beta + fraction * (1.0 - self.beta)
 
             # force end
-            if t >= 150:
+            if t >= 2000:
                 rospy.loginfo('Time out')
                 done = True
 
@@ -836,11 +836,10 @@ random.seed(seed)
 seed_torch(seed)
 # rainbown end
 
-EPISODES = 3000
-num_frames = 20000
-memory_size = 1000
-batch_size = 32
-target_update = 100
+num_frames = 50000
+memory_size = 10000
+batch_size = 64
+target_update = 2000
 
 
 if __name__ == '__main__':
@@ -865,7 +864,7 @@ if __name__ == '__main__':
         # TRAIN
         if not args.evaluate:
             if args.continue_train:
-                agent.train(num_frames,continue_train=True)
+                agent.train(num_frames,plotting_interval=int(args.checkpoint_interval),checkpoint_interval=int(args.checkpoint_interval), continue_train=True)
             else:
                 agent.train(num_frames,plotting_interval=int(args.checkpoint_interval),checkpoint_interval=int(args.checkpoint_interval))
             agent.save(args.model_path)
