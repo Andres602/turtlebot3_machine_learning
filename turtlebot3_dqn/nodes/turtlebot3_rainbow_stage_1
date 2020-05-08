@@ -64,14 +64,14 @@ from segment_tree import MinSegmentTree, SumSegmentTree
 # rainbow end
 
 # rainbow start
-parser = argparse.ArgumentParser(description='Rainbow')
+""" parser = argparse.ArgumentParser(description='Rainbow')
 parser.add_argument('--evaluate', action='store_true', help='Evaluate only')
 parser.add_argument('--checkpoint-interval', default=0, help='How often to checkpoint the model, defaults to 0 (never checkpoint)')
 parser.add_argument('--checkpoint-path', type=str, default="./checkpoint",help='Path to save/load the chekpoint from')
 parser.add_argument('--model-path', type=str, default="./saved_model", help='Path to save/load the model from')
 parser.add_argument('--continue-train', action='store_true', help='Continue a train with checkpoint')
 
-args = parser.parse_args()
+args = parser.parse_args() """
 
 class ReplayBuffer:
     """A simple numpy replay buffer."""
@@ -841,10 +841,20 @@ memory_size = 10000
 batch_size = 64
 target_update = 2000
 
+class inargs:
+    def __init__(self):
+        self.checkpoint_path='./checkpoint'
+        self.model_path= './saved_model'
+        self.checkpoint_interval= 1000
+        self.evaluate=False
+        self.continue_train=False
+
 
 if __name__ == '__main__':
+
     rospy.init_node('turtlebot3_dqn_stage_1')
-    
+
+    args= inargs()
     state_size = 26
     action_size = 5
 
