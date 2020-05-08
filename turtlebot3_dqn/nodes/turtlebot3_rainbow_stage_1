@@ -752,10 +752,10 @@ class DQNAgent:
                 'optimizer_state_dict':self.optimizer.state_dict(),
                 'losses':losess,
                 'scores':scores
-            }, "{}/{}".format(path,name))#os.path.join(path, 'model.pth'))
+            }, "{}/{}".format(path,'model.pth'))#os.path.join(path, 'model.pth'))
 
     def load_checkpoint(self,path):
-        checkpoint = torch.load("{}/{}".format(path,name))#os.path.join(path, 'model.pth'))
+        checkpoint = torch.load("{}/{}".format(path,'model.pth'))#os.path.join(path, 'model.pth'))
         self.dqn.load_state_dict(checkpoint['model_state_dict'])
         self.dqn_target.load_state_dict(checkpoint['target_state_dict'])
         self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
