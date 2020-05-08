@@ -767,7 +767,7 @@ class DQNAgent:
         return epoch, losses, scores
 
     def loadmodel(self,path,name='model.pth'):
-        model_pathName="{}/{}".format(path,name))#os.path.join(path, name)
+        model_pathName="{}/{}".format(path,name)#os.path.join(path, name)
         if os.path.isfile(model_pathName):
             state_dict = torch.load(model_pathName)
             self.dqn.load_state_dict(state_dict)
