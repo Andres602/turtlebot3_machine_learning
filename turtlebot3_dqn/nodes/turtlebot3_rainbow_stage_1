@@ -742,7 +742,7 @@ class DQNAgent:
         self.dqn_target.load_state_dict(self.dqn.state_dict())
 
     def save(self, path, name='model.pth', isCheckpoint=False):
-            torch.save(self.dqn.state_dict(), os.path.join(path, name))
+            torch.save(self.dqn.state_dict(), "{}/{}".format(path,name))#os.path.join(path, name))
 
     def save_checkpoint(self,path,epoch,losess,scores):
         torch.save({
@@ -752,10 +752,10 @@ class DQNAgent:
                 'optimizer_state_dict':self.optimizer.state_dict(),
                 'losses':losess,
                 'scores':scores
-            }, os.path.join(path, 'model.pth'))
+            }, "{}/{}".format(path,name))#os.path.join(path, 'model.pth'))
 
     def load_checkpoint(self,path):
-        checkpoint = torch.load(os.path.join(path, 'model.pth'))
+        checkpoint = torch.load("{}/{}".format(path,name))#os.path.join(path, 'model.pth'))
         self.dqn.load_state_dict(checkpoint['model_state_dict'])
         self.dqn_target.load_state_dict(checkpoint['target_state_dict'])
         self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
@@ -767,7 +767,7 @@ class DQNAgent:
         return epoch, losses, scores
 
     def loadmodel(self,path,name='model.pth'):
-        model_pathName=os.path.join(path, name)
+        model_pathName="{}/{}".format(path,name))#os.path.join(path, name)
         if os.path.isfile(model_pathName):
             state_dict = torch.load(model_pathName)
             self.dqn.load_state_dict(state_dict)
@@ -845,7 +845,7 @@ class inargs:
     def __init__(self):
         self.checkpoint_path="/content/drive/My Drive/turtlebot_stage_1/checkpoint"
         self.model_path= "/content/drive/My Drive/turtlebot_stage_1/saved_model"
-        self.checkpoint_interval= 1000
+        self.checkpoint_interval= 10
         self.evaluate=False
         self.continue_train=False
 
