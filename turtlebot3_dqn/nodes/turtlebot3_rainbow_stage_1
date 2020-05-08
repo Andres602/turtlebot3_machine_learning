@@ -847,7 +847,7 @@ class inargs:
         self.model_path= "/content/drive/My Drive/turtlebot_stage_1"
         self.checkpoint_interval= 1000
         self.evaluate=False
-        self.continue_train=True
+        self.continue_train=False
 
 
 if __name__ == '__main__':
