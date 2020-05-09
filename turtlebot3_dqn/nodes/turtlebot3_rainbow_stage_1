@@ -843,8 +843,8 @@ target_update = 2000
 
 class inargs:
     def __init__(self):
-        self.checkpoint_path="./drive/My Drive/turtlebot_stage_1/checkpoint"
-        self.model_path= "./drive/My Drive/turtlebot_stage_1/saved_model"
+        self.checkpoint_path="/content/drive/My Drive"
+        self.model_path= "/content/drive/My Drive"
         self.checkpoint_interval= 1000
         self.evaluate=False
         self.continue_train=False
